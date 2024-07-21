@@ -9,7 +9,7 @@ env:
     ECR_REPOSITORY: routebox-dev                         # set this to your Amazon ECR repository name
     ECS_SERVICE: routebox-api-dev-service                # set this to your Amazon ECS service name
     ECS_CLUSTER: routebox-dev-cluster                    # set this to your Amazon ECS cluster name
-    ECS_TASK_DEFINITION: routebox-api-dev-revision1.json # set this to the path to your Amazon ECS task definition
+    ECS_TASK_DEFINITION: routebox-task-definition-dev.json # set this to the path to your Amazon ECS task definition
     CONTAINER_NAME: routebox-dev                         # set this to the name of the container in the
     # containerDefinitions section of your task definition
 

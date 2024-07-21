@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:230327963445:task-definition/routebox-api-dev:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:230327963445:task-definition/routebox-task-dev:1",
     "containerDefinitions": [
         {
             "name": "routebox-dev",
@@ -7,9 +7,9 @@
             "cpu": 256,
             "portMappings": [
                 {
-                    "name": "routebox-dev-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "name": "routebox-dev-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/routebox-api-dev",
+                    "awslogs-group": "/ecs/routebox-task-dev",
                     "awslogs-create-group": "true",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
@@ -33,7 +33,8 @@
             "systemControls": []
         }
     ],
-    "family": "routebox-api-dev",
+    "family": "routebox-task-dev",
+    "taskRoleArn": "arn:aws:iam::230327963445:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::230327963445:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -53,6 +54,9 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
             "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
@@ -66,20 +70,15 @@
         }
     ],
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
+    "compatibilities": ["EC2", "FARGATE"],
+    "requiresCompatibilities": ["FARGATE"],
     "cpu": "256",
     "memory": "1024",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-07-11T08:17:10.861Z",
+    "registeredAt": "2024-07-21T07:01:20.117Z",
     "registeredBy": "arn:aws:iam::230327963445:root",
     "tags": []
 }
